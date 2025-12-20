@@ -8,7 +8,7 @@ import react from "@astrojs/react";
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
-    base: "/",
+    base: "/Aleotinano/",
   },
   integrations: [react()],
 });

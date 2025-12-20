@@ -19,6 +19,7 @@ export const Grid = ({ activeTab }) => {
   return (
     <>
       <motion.div
+        id="grid"
         layout
         className="grid gap-px grid-cols-2 sm:grid-cols-4 md:grid-cols-8"
       >

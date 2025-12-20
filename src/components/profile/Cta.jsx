@@ -4,7 +4,7 @@ export const Cta = ({ label, id, buttonFunction, children }) => {
       alert("message button");
     }
     if (buttonFunction === "proyects") {
-      window.location.href = "#proyects";
+      window.location.href = "#grid";
     }
   };
 

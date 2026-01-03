@@ -5,13 +5,7 @@ const { size, id, alt, title, src, label } = Astro.props;
 ---
 
 <div class="group cursor-pointer">
-  <Historie
-    size={`${size} group-hover:scale-95`}
-    id={id}
-    title={title}
-    src={src}
-    alt={alt}
-  />
+  <Historie size={size} id={id} title={title} src={src} alt={alt} />
   <p
     class="font-semibold transition text-sm mt-2 text-center text-ellipsis overflow-hidden max-w-22 group-hover:-translate-y-1"
   >

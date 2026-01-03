@@ -3,7 +3,7 @@ import Header from "./profile/Header.astro";
 import HistorieCard from "./profile/HistorieCard.astro";
 import { Tabs } from "./profile/Tabs.jsx";
 
-import { histories } from "../utils/histories.js";
+import { technologies } from "../utils/technologies.js";
 import { StoriesCarousel } from "./profile/StoriesCarousel.jsx";
 import { Cta } from "./profile/Cta.jsx";
 
@@ -34,9 +34,8 @@ import { MdOutlineWorkOutline } from "react-icons/md";
   </section>
   <StoriesCarousel client:load>
     {
-      histories.map((h) => (
+      technologies.map((h) => (
         <HistorieCard
-          size={h.size}
           id={h.id}
           title={h.title}
           src={h.src}

@@ -1,15 +1,15 @@
 ---
-const { size, src, id, title } = Astro.props;
+const { size = "size-18", src, id, title } = Astro.props;
 ---
 
 <span
-  class={`${size} bg-transparent rounded-full border-4 border-primary-hover overflow-hidden flex transition`}
+  class={` ${size} bg-transparent rounded-full border-4 border-primary-hover overflow-hidden flex transition`}
 >
   <img
     id={id}
     alt={id}
     title={title}
-    class="rounded-full flex-1 object-cover w-fit p-1 size-full"
     src={src}
+    class="rounded-full flex-1 object-cover w-fit p-1 size-full"
   />
 </span>

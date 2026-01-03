@@ -59,7 +59,7 @@ export const StoriesCarousel = ({ children }) => {
       )}
       <div
         ref={wrapperRef}
-        className=" mask-x-from-85% px-6 overflow-hidden flex gap-2 justify-start no-scrollbar"
+        className="mask-x-from-85% px-6 overflow-hidden flex gap-2 justify-start no-scrollbar"
       >
         {children}
       </div>

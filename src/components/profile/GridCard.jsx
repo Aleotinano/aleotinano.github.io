@@ -25,7 +25,6 @@ export const GridCard = ({
 
   const mdSpanForIndex = spacePatternMd[index] || "md:col-span-2";
   const spanClass = isSpace ? `col-span-1 ${mdSpanForIndex}` : normalSpan;
-  const techSize = isSpace ? "size-7s" : "size-5";
 
   return (
     <motion.div
@@ -46,9 +45,9 @@ export const GridCard = ({
     >
       <div className="w-full h-full aspect-perso max-h-100 overflow-hidden">
         <img
-          src={src}
+          src={project.gallery[0].img}
           alt={alt}
-          className="w-full h-full object-cover "
+          className="w-full h-full object-cover"
           draggable={false}
         />
       </div>
@@ -56,11 +55,18 @@ export const GridCard = ({
       <div className="absolute inset-0 bg-black/22 group-hover:bg-black/60 transition-all duration-300" />
 
       <span className="absolute z-10 flex flex-wrap gap-1.5 bottom-4 left-4 group-hover:opacity-60 transition-opacity">
-        {project.tecnologies.map((t, idx) => (
-          <span key={idx} className={`${techSize}`}>
-            <img src={t.img} alt={t.name} className="size-full rounded-full" />
-          </span>
-        ))}
+        {project.technologies.map((tech, idx) => {
+          if (!tech) return null;
+
+          return (
+            <img
+              key={idx}
+              src={tech.src}
+              alt={tech.label}
+              className="size-6 rounded-full"
+            />
+          );
+        })}
       </span>
 
       <p className="absolute inset-0 flex items-center justify-center text-white text-lg font-semibold opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all">

@@ -38,7 +38,13 @@ export const Grid = ({ activeTab }) => {
         ))}
       </motion.div>
 
-      <GridCardOpen project={selectedProject} onClose={closeCard} />
+      {selectedProject && (
+        <GridCardOpen
+          onClose={closeCard}
+          projects={projects}
+          currentIndex={projects.findIndex((p) => p.id === selectedProject.id)}
+        />
+      )}
     </>
   );
 };

@@ -1,6 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { p } from "framer-motion/client";
 import { useEffect, useState } from "react";
+import { IoMdClose } from "react-icons/io";
+import { FaArrowAltCircleRight } from "react-icons/fa";
+import { FaArrowAltCircleLeft } from "react-icons/fa";
 
 export const GridCardOpen = ({ onClose, projects = [], currentIndex = 0 }) => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(currentIndex);
@@ -48,7 +50,7 @@ export const GridCardOpen = ({ onClose, projects = [], currentIndex = 0 }) => {
   };
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       <motion.div
         className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center "
         onClick={onClose}
@@ -57,12 +59,29 @@ export const GridCardOpen = ({ onClose, projects = [], currentIndex = 0 }) => {
         exit={{ opacity: 0 }}
       >
         <motion.div
+          key={currentProject.id}
           layoutId={`card-${currentProject.id}`}
           onClick={(e) => e.stopPropagation()}
-          className="bg-primary w-[90%] max-w-5xl max-h-[90%] h-full grid grid-cols-1 md:grid-cols-2 rounded-sm overflow-hidden"
+          className="bg-primary w-[90%] max-w-5xl max-h-[90%] h-full grid grid-cols-2 max-md:grid-cols-1 rounded-sm overflow-hidden"
         >
           {/* Imagen */}
-          <div className="relative flex items-center justify-center max-h-[90vh]">
+          <div
+            className="
+            relative flex items-center justify-center
+            aspect-video
+            md:aspect-auto
+            md:h-full
+            max-h-[90vh]
+            max-md:max-h-[40vh]
+            "
+          >
+            <button
+              aria-label="close modal"
+              onClick={onClose}
+              className="hover:scale-95 transition-transform group cursor-pointer p-2 max-md:border-2 bg-black/95 absolute left-4 top-4 z-20 rounded-full"
+            >
+              <IoMdClose size={18} />
+            </button>
             <motion.img
               key={currentImageIndex}
               src={currentProject.gallery[currentImageIndex].img}
@@ -85,12 +104,11 @@ export const GridCardOpen = ({ onClose, projects = [], currentIndex = 0 }) => {
                 </button>
               </>
             ) : null}
-
             {currentProject.private ? (
               <p className="z-30 absolute bottom-2 left-2 right-2 bg-black/70 text-sm p-2 rounded text-center">
                 Por motivos de confidencialidad, no se muestra la interfaz
                 completa ni el código fuente. El funcionamiento y decisiones
-                técnicas pueden explicarse en detalle en una entrevista.{" "}
+                técnicas pueden explicarse en detalle en una entrevista.
               </p>
             ) : (
               <p className="z-30 absolute bottom-2 left-2 right-2 bg-black/70 text-sm p-2 rounded text-center">
@@ -167,7 +185,7 @@ export const GridCardOpen = ({ onClose, projects = [], currentIndex = 0 }) => {
               )}
               <a
                 className="flex-1 text-center bg-primary-hover p-3 rounded-lg hover:bg-secondary transition-colors cursor-"
-                href={currentProject.github}
+                href={currentProject.code}
               >
                 GitHub
               </a>
@@ -176,11 +194,24 @@ export const GridCardOpen = ({ onClose, projects = [], currentIndex = 0 }) => {
         </motion.div>
 
         {/* Navegación proyectos */}
-        <button onClick={handlePreviousProject} className="absolute left-4">
-          ←
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            handlePreviousProject();
+          }}
+          className="cursor-pointer absolute left-10 z-40"
+        >
+          <FaArrowAltCircleLeft size={24} />
         </button>
-        <button onClick={handleNextProject} className="absolute right-4">
-          →
+
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            handleNextProject();
+          }}
+          className="cursor-pointer absolute right-10 z-40"
+        >
+          <FaArrowAltCircleRight size={24} />
         </button>
       </motion.div>
     </AnimatePresence>

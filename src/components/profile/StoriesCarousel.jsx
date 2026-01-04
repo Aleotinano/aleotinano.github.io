@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const StoriesCarousel = ({ children }) => {
   const wrapperRef = useRef(null);
@@ -7,7 +8,10 @@ export const StoriesCarousel = ({ children }) => {
   const [ScrollRight, setScrollRight] = useState(false);
 
   useEffect(() => {
-    scroll("right");
+    const timeout = setTimeout(() => {
+      scroll("right");
+    }, 300);
+
     const updateScrollButtons = () => {
       const wrapper = wrapperRef.current;
       if (!wrapper) return;
@@ -19,10 +23,14 @@ export const StoriesCarousel = ({ children }) => {
     };
 
     updateScrollButtons();
+
     const wrapper = wrapperRef.current;
     wrapper?.addEventListener("scroll", updateScrollButtons);
 
-    return () => wrapper?.removeEventListener("scroll", updateScrollButtons);
+    return () => {
+      clearTimeout(timeout); // 👈 importante
+      wrapper?.removeEventListener("scroll", updateScrollButtons);
+    };
   }, []);
 
   const scroll = (direction) => {
@@ -37,11 +45,15 @@ export const StoriesCarousel = ({ children }) => {
   };
 
   return (
-    <section className="overflow-visible relative w-full max-w-3xl min-h-fit flex justify-center py-10">
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="max-s:px-4.5 px-5 overflow-visible  relative w-full max-w-3xl min-h-fit flex justify-center py-10 max-s:py-8"
+    >
       {ScrollLeft && (
         <button
           onClick={() => scroll("left")}
-          className="cursor-pointer opacity-70 transition hover:scale-105 hover:opacity-100 absolute -left-1 top-1/2 -translate-y-1/2 z-50 bg-primary-hover/60 shadow-lg rounded-full p-2"
+          className="max-md:hidden cursor-pointer opacity-70 transition hover:scale-105 hover:opacity-100 absolute left-1 top-1/2 -translate-y-1/2 z-50 bg-primary-hover/60 shadow-lg rounded-full p-2"
           aria-label="Scroll left"
         >
           <ChevronLeft className="w-6 h-6 text-white " />
@@ -51,7 +63,7 @@ export const StoriesCarousel = ({ children }) => {
       {ScrollRight && (
         <button
           onClick={() => scroll("right")}
-          className="cursor-pointer opacity-70 transition hover:scale-105 hover:opacity-100 absolute -right-1 top-1/2 -translate-y-1/2 z-50 bg-primary-hover/60 shadow-lg rounded-full p-2"
+          className=" max-md:hidden cursor-pointer opacity-70 transition hover:scale-105 hover:opacity-100 absolute right-1 top-1/2 -translate-y-1/2 z-50 bg-primary-hover/60 shadow-lg rounded-full p-2"
           aria-label="Scroll right"
         >
           <ChevronRight className="w-6 h-6 text-white " />
@@ -59,10 +71,10 @@ export const StoriesCarousel = ({ children }) => {
       )}
       <div
         ref={wrapperRef}
-        className="mask-x-from-85% px-6 overflow-hidden flex gap-2 justify-start no-scrollbar"
+        className="mask-x-from-85% px-6 max-s:px-4.5 overflow-hidden max-s:overflow-scroll flex gap-2 justify-start no-scrollbar"
       >
         {children}
       </div>
-    </section>
+    </motion.section>
   );
 };

@@ -1,0 +1,17 @@
+---
+const { show } = Astro.props;
+---
+
+<ul
+  id="profile-description"
+  class={`flex-col gap-1 text-sm mt-2 max-s:w-full max-s:px-5  max-s:justify-start  ${show}`}
+>
+  <li></li>
+  <li>📍 San juan, Argentina</li>
+  <li class="font-medium max-w-90">
+    <span class="text-red-300"> Diseño </span>
+    y
+    <span class="text-blue-300"> desarrollo </span>
+    de interfaces web modernas, enfocadas en rendimiento y experiencia de usuario.
+  </li>
+</ul>

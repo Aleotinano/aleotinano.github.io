@@ -8,8 +8,8 @@ const getTechnologyByName = (name) => {
 
 export const projects = [
   {
-    id: "portafolio-2025",
-    title: "Portafolio 2025",
+    id: "portafolio-2026",
+    title: "Portafolio 2026",
     description: {
       short:
         "Portafolio personal enfocado en experiencia de usuario, animaciones y arquitectura moderna.",
@@ -50,8 +50,11 @@ export const projects = [
       getTechnologyByName("Pnpm"),
     ],
 
-    demo: "https://TU-URL-AQUI",
-    gallery: [{ img: "./p-6.png", alt: "Portada Portafolio 2025" }],
+    demo: "https://aleotinano.netlify.app",
+    code: "https://github.com/Aleotinano/aleotinano.github.io",
+    gallery: [
+      { img: "./portafolio2026/image.png", alt: "Portada-Portafolio-2026" },
+    ],
   },
 
   {
@@ -91,7 +94,6 @@ export const projects = [
     ],
 
     status: "Proyecto productivo (empresa)",
-    private: true,
 
     technologies: [
       getTechnologyByName("React"),
@@ -99,7 +101,7 @@ export const projects = [
       getTechnologyByName("Javascript"),
       getTechnologyByName("Css"),
     ],
-
+    private: true,
     demo: "private",
     gallery: [
       { img: "/ansser/ansser1.png", alt: "Dashboard administrativo Ansser" },
@@ -201,6 +203,7 @@ export const projects = [
     ],
     private: false,
     demo: "https://aleotinano.github.io/Huella/",
+    code: "https://github.com/Aleotinano/Huella",
     gallery: [{ img: "./huella/Huella1.png", alt: "Portada-Huella" }],
   },
 
@@ -234,7 +237,7 @@ export const projects = [
       getTechnologyByName("Html"),
     ],
     demo: "https://dafoodale.netlify.app/",
-    code: "https://github.com/Aleotinano/Portafolio",
+    code: "https://github.com/Aleotinano/DaFood-Frontend",
     gallery: [{ img: "./daFood/DaFood1.png", alt: "Portada-DaFood" }],
   },
 
@@ -276,6 +279,7 @@ export const projects = [
       getTechnologyByName("Html"),
     ],
     demo: "https://subtle-pony-24f2c8.netlify.app/",
+    code: "https://github.com/Aleotinano/Portafolio",
     gallery: [
       { img: "./portafolio2023/image.png", alt: "Portada-Portafolio-2023" },
     ],
@@ -285,31 +289,30 @@ export const projects = [
     id: "landing-ansser",
     title: "Landing",
     description: {
-      short: "Primer portafolio personal como desarrollador frontend.",
-      full: "Proyecto de portafolio personal donde presento mis primeros trabajos, habilidades y experiencia como desarrollador frontend durante 2023.",
+      short: "Landing page informativa para comercializacion.",
+      full: "Landing page desarrollada para comercializacion de un producto. El trabajo se centró en la implementación frontend del diseño proporcionado, priorizando una estructura clara, responsive y preparada para futuras ampliaciones.",
     },
     role: [
-      "Frontend Development",
-      "UI Design",
-      "Component Architecture",
-      "Responsive Design",
+      "Desarrollo Frontend",
+      "Maquetación UI",
+      "Implementación de diseño",
+      "Responsive Layout",
     ],
 
     features: [
-      "Sección de presentación personal",
-      "Listado de proyectos con descripciones",
-      "Diseño responsive",
+      "Landing page informativa del producto",
+      "Secciones de beneficios y propuesta de valor",
       "Estructura clara de navegación",
-      "Soporte multi idioma (i18n)",
+      "Diseño responsive para desktop y mobile",
+      "Preparación para futuras secciones comerciales",
     ],
 
     technicalDecisions: [
-      "Primer acercamiento a React y arquitectura basada en componentes",
-      "Separación de secciones en componentes reutilizables",
-      "Uso de CSS Modules para organizar estilos",
-      "Implementación de i18n para múltiples idiomas",
+      "Implementación en React con arquitectura simple por secciones",
+      "Separación de componentes para facilitar mantenimiento",
+      "Uso de CSS modular para estilos escalables",
     ],
-
+    private: true,
     status: "Proyecto inicial (completado)",
     technologies: [
       getTechnologyByName("React"),
@@ -318,7 +321,6 @@ export const projects = [
       getTechnologyByName("Javascript"),
       getTechnologyByName("Html"),
     ],
-    demo: "https://subtle-pony-24f2c8.netlify.app/",
     gallery: [{ img: "./landing/Landing1.png", alt: "Landing-Portada" }],
   },
 ];

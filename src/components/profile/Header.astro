@@ -1,22 +1,26 @@
 ---
 import Historie from "./Historie.astro";
+import Description from "./Description.astro";
 ---
 
 <header
-  class="flex flex-row items-center justify-center max-w-2xl w-full pb-6 gap-5 mt-5 h-fit"
+  class="flex flex-row items-center max-s:items-end justify-center max-s:justify-start min-h-fit max-w-2xl max-s:max-w-full w-full px-5 gap-5 mt-6"
 >
   <section
     id="profile-container"
-    class="relative transition hover:scale-95 cursor-pointer flex flex-col"
+    class="relative transition hover:scale-95 cursor-pointer"
   >
     <button
       id="profile-note"
-      class="absolute -top-5 left-3
+      class="absolute
+        -top-5 max-s:-top-10
+        left-3
         text-xs text-gray-300
          bg-primary-hover rounded-xl
          shadow-lg
          cursor-pointer
-         h-9 w-fit
+         h-9 max-s:h-12
+         w-fit
          text-wrap
          z-10
          p-2"
@@ -31,7 +35,7 @@ import Historie from "./Historie.astro";
       ></span>
     </button>
     <Historie
-      size="size-42"
+      size="size-42 max-s:size-32 "
       src="/alePhoto.jpg "
       id="profile-picture"
       alt="Ale photo"
@@ -43,34 +47,26 @@ import Historie from "./Historie.astro";
     <h1 class="text-2xl font-bold">Alejandro Otiñano</h1>
     <h2 class="text-base text-neutral-200">Desarrollador Frontend</h2>
 
-    <ul class="flex gap-5 text-sm mt-3 text-nowrap font-medium">
-      <li class="flex items-center gap-1 text-center">
-        <span class="font-semibold text-white">+7</span>
-        <span class="text-neutral-300">proyectos</span>
-      </li>
-
-      <li class="flex items-center gap-1 text-center">
-        <span class="font-semibold text-white">2</span>
-        <span class="text-neutral-300">años codeando</span>
-      </li>
-
-      <li class="flex items-center gap-1 text-center">
-        <span class="font-semibold text-white">1 </span>
-        <span class="text-neutral-300"> año de experiencia laboral </span>
-      </li>
-    </ul>
     <ul
-      id="profile-description"
-      class="flex flex-col gap-1 justify-center text-sm mt-3"
+      class="flex max-s:flex-col flex-wrap gap-5 max-s:gap-2 text-sm mt-3 font-medium"
     >
-      <li>♋</li>
-      <li>San juan, Argentina</li>
-      <li class="font-medium max-w-90">
-        <span class="text-red-300"> Diseño </span>
-        y
-        <span class="text-blue-300"> desarrollo </span>
-        de interfaces web modernas, enfocadas en rendimiento y experiencia de usuario.
+      <li class="flex items-center text-center">
+        <span class="font-semibold text-white pr-1.5">7</span>
+        <span class="text-neutral-300 text-wrap">proyectos</span>
+      </li>
+
+      <li class="flex items-center text-center">
+        <span class="font-semibold text-white pr-1.5">2</span>
+        <span class="text-neutral-300 text-wrap">años codeando</span>
+      </li>
+
+      <li class="flex items-center text-center">
+        <span class="font-semibold text-white pr-1.5">1 </span>
+        <span class="text-neutral-300 text-wrap">
+          año de experiencia laboral
+        </span>
       </li>
     </ul>
+    <Description show="flex max-s:hidden" />
   </section>
 </header>

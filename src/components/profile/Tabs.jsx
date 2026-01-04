@@ -1,53 +1,55 @@
 import { useState } from "react";
-import { MdOutlineWorkOutline } from "react-icons/md";
-import { MdOutlineWork } from "react-icons/md";
-import { FaRegUser } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
+import { MdOutlineWorkOutline, MdOutlineWork } from "react-icons/md";
+import { FaRegUser, FaUser } from "react-icons/fa";
 
-import { Grid } from "./Grid.jsx";
+import { Grid } from "./grid/Grid.jsx";
+import { Info } from "./info/Info.jsx";
+import { motion } from "framer-motion";
 
 export const Tabs = () => {
   const [activeTab, setActiveTab] = useState("works");
 
   return (
     <>
-      <div className="flex justify-center gap-10 border-b-2 border-primary-hover ">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex justify-center gap-10 border-b border-primary-hover"
+        id="grid"
+      >
         <button
-          className={`cursor-pointer px-6 py-2 border-b-2 text-white transition-all${
+          onClick={() => setActiveTab("works")}
+          className={`px-6 py-3 border-b-2 transition cursor-pointer ${
             activeTab === "works"
               ? "border-white"
-              : "opacity-60 hover:opacity-80"
+              : "border-transparent opacity-60 hover:opacity-80"
           }`}
-          onClick={() => {
-            setActiveTab("works");
-          }}
         >
           {activeTab === "works" ? (
-            <MdOutlineWork className="size-6 " />
+            <MdOutlineWork className="size-6" />
           ) : (
-            <MdOutlineWorkOutline className="size-6 " />
+            <MdOutlineWorkOutline className="size-6" />
           )}
         </button>
 
         <button
-          className={`cursor-pointer px-6 py-2 border-b-2 ${
+          onClick={() => setActiveTab("info")}
+          className={`px-6 py-3 border-b-2 transition cursor-pointer ${
             activeTab === "info"
               ? "border-white"
-              : "opacity-60 hover:opacity-80"
+              : "border-transparent opacity-60 hover:opacity-80"
           }`}
-          onClick={() => {
-            setActiveTab("info");
-          }}
         >
           {activeTab === "info" ? (
-            <FaUser className="size-6 " />
+            <FaUser className="size-6" />
           ) : (
-            <FaRegUser className="size-6 " />
+            <FaRegUser className="size-6" />
           )}
         </button>
-      </div>
+      </motion.div>
 
-      <Grid activeTab={activeTab} />
+      {activeTab === "works" && <Grid />}
+      {activeTab === "info" && <Info />}
     </>
   );
 };

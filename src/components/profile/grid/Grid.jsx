@@ -1,6 +1,6 @@
 import { GridCard } from "./GridCard.jsx";
 import { GridCardOpen } from "./GridCardOpen.jsx";
-import { projects } from "../../utils/projects.js";
+import { projects } from "../../../utils/projects.js";
 import { useState } from "react";
 
 import { motion } from "framer-motion";
@@ -19,9 +19,15 @@ export const Grid = ({ activeTab }) => {
   return (
     <>
       <motion.div
-        id="grid"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         layout
-        className="grid gap-px grid-cols-2 sm:grid-cols-4 md:grid-cols-8"
+        className="
+        grid gap-px
+        grid-cols-2     
+        sm:grid-cols-3
+        lg:grid-cols-4  
+      "
       >
         {projects.map((item, index) => (
           <GridCard

@@ -2,7 +2,7 @@
 import Header from "./profile/Header.astro";
 import HistorieCard from "./profile/HistorieCard.astro";
 import { Tabs } from "./profile/Tabs.jsx";
-
+import Description from "./profile/Description.astro";
 import { technologies } from "../utils/technologies.js";
 import { StoriesCarousel } from "./profile/StoriesCarousel.jsx";
 import { Cta } from "./profile/Cta.jsx";
@@ -14,7 +14,10 @@ import { MdOutlineWorkOutline } from "react-icons/md";
 
 <main class="flex flex-col items-center w-full py-6 text-white gap-2">
   <Header />
-  <section class="flex w-full gap-2 max-w-2xl">
+  <Description show="hidden max-s:flex" />
+  <section
+    class="flex w-full gap-2 max-s:mt-4 max-w-2xl max-s:max-w-full mt-7 px-5"
+  >
     <Cta
       client:load
       id="message-button"

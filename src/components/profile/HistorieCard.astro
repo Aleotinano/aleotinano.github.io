@@ -1,13 +1,19 @@
 ---
 import Historie from "./Historie.astro";
 
-const { size, id, alt, title, src, label } = Astro.props;
+const { id, alt, title, src, label } = Astro.props;
 ---
 
 <div class="group cursor-pointer">
-  <Historie size={size} id={id} title={title} src={src} alt={alt} />
+  <Historie
+    size="size-18 max-s:size-14 "
+    id={id}
+    title={title}
+    src={src}
+    alt={alt}
+  />
   <p
-    class="font-semibold transition text-sm mt-2 text-center text-ellipsis overflow-hidden max-w-22 group-hover:-translate-y-1"
+    class="font-semibold transition text-sm max-s:text-xs mt-2 text-center text-ellipsis overflow-hidden max-w-22 group-hover:-translate-y-1"
   >
     {label}
   </p>

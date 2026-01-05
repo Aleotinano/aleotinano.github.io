@@ -13,7 +13,7 @@ export const Info = () => {
         <p className="text-xl max-md:text-base">
           Soy Alejandro, desarrollador frontend con más de 2 años de experiencia
           creando interfaces web y 1 año de experiencia en una empresa como
-          unico desarrollador frontend.
+          único desarrollador frontend.
         </p>
 
         <p className="text-xl max-md:text-base">

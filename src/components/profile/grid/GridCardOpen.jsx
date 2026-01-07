@@ -174,22 +174,24 @@ export const GridCardOpen = ({ onClose, projects = [], currentIndex = 0 }) => {
                 </ul>
               </div>
             )}
-            <div className="flex gap-2 mt-auto">
-              {currentProject.demo && (
+            {currentProject.private ? null : (
+              <div className="flex gap-2 mt-auto">
+                {currentProject.demo && (
+                  <a
+                    className="flex-1 text-center bg-primary-hover p-3 rounded-lg hover:bg-secondary transition-colors cursor-"
+                    href={currentProject.demo}
+                  >
+                    Ver proyecto
+                  </a>
+                )}
                 <a
                   className="flex-1 text-center bg-primary-hover p-3 rounded-lg hover:bg-secondary transition-colors cursor-"
-                  href={currentProject.demo}
+                  href={currentProject.code}
                 >
-                  Ver proyecto
+                  GitHub
                 </a>
-              )}
-              <a
-                className="flex-1 text-center bg-primary-hover p-3 rounded-lg hover:bg-secondary transition-colors cursor-"
-                href={currentProject.code}
-              >
-                GitHub
-              </a>
-            </div>
+              </div>
+            )}
           </div>
         </motion.div>
 

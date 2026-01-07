@@ -12,7 +12,7 @@ export const MessagePill = () => {
       case "whatsapp":
         return `https://wa.me/${value}`;
       case "email":
-        return `mailto:${value}`;
+        return `https://mail.google.com/mail/?view=cm&fs=1&to=${value}`;
       case "link":
       default:
         return value;
@@ -32,19 +32,23 @@ export const MessagePill = () => {
     <AnimatePresence>
       <motion.div
         id="message-pill"
-        className="fixed bottom-6 right-6 z-50 cursor-pointer"
+        className="fixed bottom-6 right-6 z-50"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0 }}
       >
         <motion.div
           layout
-          onClick={() => setIsOpen(!isOpen)}
           className={`
-            bg-message text-white shadow-xl overflow-hidden
-            ${isOpen ? "w-80 h-96 rounded-xl" : "w-14 h-14 rounded-full"}
-            flex items-center justify-center
-          `}
+          bg-message text-white shadow-xl overflow-hidden
+          ${
+            isOpen
+              ? "w-80 h-96 rounded-xl"
+              : "w-14 h-14 rounded-full cursor-pointer"
+          }
+          flex items-center justify-center
+        `}
+          onClick={() => !isOpen && setIsOpen(true)}
         >
           {!isOpen ? (
             <span className="text-sm font-bold">
@@ -53,13 +57,19 @@ export const MessagePill = () => {
           ) : (
             <div className="flex flex-col w-full h-full py-2">
               <header className="flex items-center justify-between py-3 px-4 border-b border-secondary">
-                <h3 className="font-semibold text-lg  ">Contactos</h3>
-                <i>
+                <h3 className="font-semibold text-lg">Contactos</h3>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsOpen(false);
+                  }}
+                  className="cursor-pointer hover:scale-95 transition-transform"
+                >
                   <IoMdClose size={20} />
-                </i>
+                </button>
               </header>
 
-              <ul className="flex-1 rounded-lg text-sm ">
+              <ul className="flex-1  text-sm overflow-y-auto">
                 {contacts.map((c) => {
                   const Icon = c.icon;
                   return (

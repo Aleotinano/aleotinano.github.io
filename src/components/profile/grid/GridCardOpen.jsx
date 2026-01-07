@@ -199,7 +199,7 @@ export const GridCardOpen = ({ onClose, projects = [], currentIndex = 0 }) => {
             e.stopPropagation();
             handlePreviousProject();
           }}
-          className="cursor-pointer absolute left-10 z-40"
+          className="cursor-pointer absolute left-1 z-40"
         >
           <FaArrowAltCircleLeft size={24} />
         </button>
@@ -209,7 +209,7 @@ export const GridCardOpen = ({ onClose, projects = [], currentIndex = 0 }) => {
             e.stopPropagation();
             handleNextProject();
           }}
-          className="cursor-pointer absolute right-10 z-40"
+          className="cursor-pointer absolute right-1 z-40"
         >
           <FaArrowAltCircleRight size={24} />
         </button>

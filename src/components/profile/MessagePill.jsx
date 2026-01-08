@@ -13,6 +13,9 @@ export const MessagePill = () => {
         return `https://wa.me/${value}`;
       case "email":
         return `https://mail.google.com/mail/?view=cm&fs=1&to=${value}`;
+      case "discord":
+        return `https://discord.com/users/${value}`;
+
       case "link":
       default:
         return value;
@@ -32,7 +35,7 @@ export const MessagePill = () => {
     <AnimatePresence>
       <motion.div
         id="message-pill"
-        className="fixed bottom-6 right-6 z-50"
+        className="fixed bottom-6 max-md:bottom-3 right-6 max-md:right-3  z-50"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0 }}
@@ -43,7 +46,7 @@ export const MessagePill = () => {
           bg-message text-white shadow-xl overflow-hidden
           ${
             isOpen
-              ? "w-80 h-96 rounded-xl"
+              ? "w-80 h-fit rounded-xl"
               : "w-14 h-14 rounded-full cursor-pointer"
           }
           flex items-center justify-center
@@ -55,9 +58,9 @@ export const MessagePill = () => {
               <PiPaperPlaneTiltBold size={18} />
             </span>
           ) : (
-            <div className="flex flex-col w-full h-full py-2">
+            <div className="flex flex-col w-full h-full ">
               <header className="flex items-center justify-between py-3 px-4 border-b border-secondary">
-                <h3 className="font-semibold text-lg">Contactos</h3>
+                <h3 className="font-semibold text-lg py-1">Contactos</h3>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -76,8 +79,16 @@ export const MessagePill = () => {
                     <li key={c.id}>
                       <a
                         href={getContactLink(c.type, c.value)}
-                        target={c.type === "link" ? "_blank" : "_self"}
-                        rel={c.type === "link" ? "noopener noreferrer" : ""}
+                        target={
+                          c.type === "link" || c.type === "discord"
+                            ? "_blank"
+                            : "_self"
+                        }
+                        rel={
+                          c.type === "link" || c.type === "discord"
+                            ? "noopener noreferrer"
+                            : ""
+                        }
                         className="flex items-center text-base gap-3 py-4 px-4 hover:bg-secondary transition-colors"
                         onClick={(e) => e.stopPropagation()}
                       >

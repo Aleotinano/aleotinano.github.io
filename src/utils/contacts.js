@@ -2,6 +2,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaGithub } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
+import { FaDiscord } from "react-icons/fa";
 
 export const contacts = [
   {
@@ -17,6 +18,13 @@ export const contacts = [
     icon: FaGithub,
     type: "link",
     value: "https://github.com/Aleotinano",
+  },
+  {
+    id: "discord",
+    label: "Discord",
+    icon: FaDiscord,
+    type: "Discord",
+    value: "https://discord.com/users/558890844275605540",
   },
   {
     id: "whatsapp",
